@@ -148,7 +148,12 @@ if (typeof ARIA2=="undefined"||!ARIA2) var ARIA2=(function(){
 
     request: function(){},
     batch_request: function(){},
-
+    /*@method: rpc method string,
+    @params: is an array of objects,
+    @success: callback if success,
+    @error: callback if error.
+*/
+      
     request_http: function(method, params, success, error) {
       if (error == undefined)
         error = default_error;
@@ -357,6 +362,24 @@ if (typeof ARIA2=="undefined"||!ARIA2) var ARIA2=(function(){
           bind_event($("#active-tasks-table"))
         }
       );
+    },
+/*proxy for aria2.changeUri(gid, fileIndex, delUris, addUris[, position])
+*/
+    change_uri: function(gid, fileIndex, delUris,addUris){
+      ARIA2.request("changeUri",
+          [gid, fineIndex, delUris,addUris],
+          function(){
+      Console.log('success in change_uri');
+      },
+          function(){
+              Console.log('failed in change_uri');
+          });
+    },
+    add_alternative_source: function(gid, addUri){
+       add_alternative_sources(gid,[addUri]) ;
+    },
+    add_alternative_sources: function(gid, addUris){
+        change_uri(gid,0,[],addUris);
     },
 
     check_active_list: function() {

@@ -150,6 +150,8 @@
       <li><a href="###" onclick="YAAW.contextmenu.pause();">Pause</a></li>
       <li><a href="###" onclick="YAAW.contextmenu.remove();">Remove</a></li>
       <li class="task-move divider"></li>
+      <li><a href="#add-source-modal" data-toggle="modal" >Add Alternative Source</a></li>
+      <li class="task-move divider"></li>
       <li class="task-move"><a href="###" onclick="YAAW.contextmenu.movetop();">MoveTop</a></li>
       <li class="task-move"><a href="###" onclick="YAAW.contextmenu.moveup();">MoveUp</a></li>
       <li class="task-move"><a href="###" onclick="YAAW.contextmenu.movedown();">MoveDown</a></li>
@@ -179,6 +181,31 @@
       <a href="###" onclick="$('#add-task-uri').submit();" id="add-task-submit" class="btn btn-primary">Add</a>
       <a href="###" onclick="YAAW.add_task.clean();" class="btn" data-dismiss="modal">Cancel</a>
     </div>
+    </section>
+
+    <section class="modal hide fade" id="add-source-modal">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            <h3>Add Alternative Source</h3>
+        </div>
+        <div class="modal-body">
+            <div id="add-source-alert" class="alert alert-error hide">
+                <a href="###" onclick="$('#add-source-alert').hide();" class="close">×</a>
+                <strong>Error:</strong> <span class="alert-msg"></span>
+            </div>
+            <form id="add-source-uri" onsubmit="YAAW.add_task.submit(this);return false;">
+                <div class="input-append">
+                    <input type="text" name="uri" id="source-uri-input" class="input-clear" placeholder="HTTP, FTP or Magnet" /><span><a id="torrent-up-btn" class="btn">Upload Torrent<input type="file" id="torrent-up-input" /></a></span>
+                </div>
+                <textarea id="source-uri-textarea" rows=5 class="input-clear hide" placeholder="HTTP, FTP or Magnet"></textarea>
+            </form>
+            <div id="source-uri-more"><span class="or-and">&or;&or;&or;&or;&or;&or;</span><span class="or-and" style="display:none;">&and;&and;&and;&and;&and;&and;</span></div>
+            <div id="add-source-option-wrap"></div>
+        </div>
+        <div class="modal-footer">
+            <a href="###" onclick="$('#add-source-uri').submit();" id="add-source-submit" class="btn btn-primary">Add</a>
+            <a href="###" onclick="YAAW.add_source.clean();" class="btn" data-dismiss="modal">Cancel</a>
+        </div>
     </section>
 
     <section class="modal hide fade" id="setting-modal">

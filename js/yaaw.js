@@ -22,6 +22,7 @@ var YAAW = (function() {
   var selected_tasks = false;
   var on_gid = null;
   var torrent_file = null, file_type = null;
+  //closure mode
   return {
     init: function() {
       $('#main-control').show();
@@ -359,7 +360,19 @@ var YAAW = (function() {
         },
       },
     },
-
+      //todo:need implements
+    add_source: {
+        submit:function(url){
+            alert('not implement');
+          if (on_gid) ARIA2.add_alternative_source(on_gid,url);
+          on_git = null;
+      },
+    clean:function(url){
+        alert('not implement');
+    },
+    upload:function(url){
+        alert('not implement');
+    }},
     add_task: {
       submit: function(_this) {
         var uri = $("#uri-input").val() || $("#uri-textarea").val() && $("#uri-textarea").val().split("\n") ;
